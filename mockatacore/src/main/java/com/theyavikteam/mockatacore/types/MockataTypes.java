@@ -6,17 +6,20 @@ import com.theyavikteam.mockatacore.annotations.MockCharacter;
 import com.theyavikteam.mockatacore.annotations.MockDouble;
 import com.theyavikteam.mockatacore.annotations.MockFloat;
 import com.theyavikteam.mockatacore.annotations.MockInteger;
+import com.theyavikteam.mockatacore.annotations.MockList;
 import com.theyavikteam.mockatacore.annotations.MockLong;
 import com.theyavikteam.mockatacore.annotations.MockParam;
 import com.theyavikteam.mockatacore.annotations.MockShort;
 import com.theyavikteam.mockatacore.annotations.MockString;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MockataTypes {
 
-    private static final int PERCENTAGE = 100;
-    private static Random random = new Random();
+    public static final int PERCENTAGE = 100;
+    public static Random random = new Random();
 
     //TODO RANGE VALUES
 

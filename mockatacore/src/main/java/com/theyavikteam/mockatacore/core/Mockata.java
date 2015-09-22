@@ -1,6 +1,7 @@
 package com.theyavikteam.mockatacore.core;
 
 import com.theyavikteam.mockatacore.annotations.MockConstructor;
+import com.theyavikteam.mockatacore.annotations.MockList;
 import com.theyavikteam.mockatacore.annotations.MockParam;
 import com.theyavikteam.mockatacore.types.MockataTypes;
 
@@ -40,7 +41,13 @@ public class Mockata {
 
                 }
             } else if (parameterTypes[i] instanceof ParameterizedType) {
-
+                ParameterizedType parameterizedType = (ParameterizedType)parameterTypes[i];
+                fieldsClasses[i] = ((Class)parameterizedType.getRawType());
+                if (mockConstructor.getParameterAnnotations()[i].length > 0) {
+                    fieldsValues[i] = getMockParameterizedValues(fieldsClasses[i].getSimpleName(), ((Class) ((ParameterizedType) parameterTypes[i]).getActualTypeArguments()[0]).getSimpleName(), clazz, (MockParam) mockConstructor.getParameterAnnotations()[i][0]);
+                }else {
+                    fieldsValues[i] = getMockParameterizedValues(fieldsClasses[i].getSimpleName(), ((Class) ((ParameterizedType) parameterTypes[i]).getActualTypeArguments()[0]).getSimpleName(), null, null);
+                }
             }
         }
 
@@ -92,6 +99,49 @@ public class Mockata {
                 break;
         }
         return mockValue;
+    }
+
+    private static <T> Object getMockParameterizedValues(String parentValueType, String childValueType, Class<T> clazz, MockParam mockParam){
+        Object mockValue = null;
+        switch (parentValueType){
+            case "List":
+                mockValue = mockList(getMockList(clazz, mockParam), clazz, childValueType);
+                break;
+        }
+
+        return mockValue;
+    }
+
+    public static <T> List<Object> mockList(MockList mockList, Class<T> clazz, String childrenValueType) {
+        List<Object> mockValue = null;
+        int defaultLength = 3;
+        if (mockList != null){
+            mockValue = new ArrayList<>();
+            if(MockataTypes.random.nextInt(MockataTypes.PERCENTAGE) <= MockataTypes.PERCENTAGE - mockList.nullable()){
+                for (int i = 0; i < mockList.length(); i ++) {
+                    mockValue.add(getMockValue(childrenValueType, null, null));
+                }
+            }
+        }else{
+            mockValue = new ArrayList<>();
+            for (int i = 0; i < defaultLength; i ++) {
+                mockValue.add(getMockValue(childrenValueType, null, null));
+            }
+        }
+        return mockValue;
+    }
+
+    public static <T> MockList getMockList(Class<T> clazz, MockParam mockParam){
+        MockList mockList = null;
+        if (mockParam != null){
+            for (int i = 0; i < clazz.getDeclaredFields().length; i++){
+                if(clazz.getDeclaredFields()[i].getDeclaredAnnotations().length > 0 && mockParam.fieldName().equals(((MockList)clazz.getDeclaredFields()[i].getDeclaredAnnotations()[0]).name())){
+                    mockList = (MockList)clazz.getDeclaredFields()[i].getDeclaredAnnotations()[0];
+                    break;
+                }
+            }
+        }
+        return mockList;
     }
 
 }
