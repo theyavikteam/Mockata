@@ -20,14 +20,14 @@ task clean(type: Delete) {
 }
 
 task clearJar(type: Delete) {
-    delete 'build/libs/Mockata.jar'
+    delete 'build/libs/mockata.jar'
 }
 
 task makeJar(type: Copy) {
     from('build/bundles/release/')
     into('build/libs/')
     include('classes.jar')
-    rename ('classes.jar', 'Mockata.jar')
+    rename ('classes.jar', 'mockata.jar')
 }
 
 makeJar.dependsOn(clearJar, build)

@@ -10,14 +10,14 @@ public class Dog {
 
     private Boolean today;
 
-    @MockConstructor
+
     public Dog(Integer years, Double month, Boolean today) {
         this.years = years;
         this.month = month;
         this.today = today;
     }
 
-
+    @MockConstructor
     public Dog(Double month) {
         this.month = month;
     }
