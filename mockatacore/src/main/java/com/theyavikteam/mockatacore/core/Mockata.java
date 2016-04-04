@@ -12,15 +12,21 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import sun.rmi.runtime.Log;
 
 public class Mockata {
 
-    public static <T> List<T> createMockata(Class<T> clazz, int mockNumber) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public static <T> List<T> createMockata(Class<T> clazz, int mockNumber) {
         List<T> mockatas = new ArrayList<>();
         for (int i = 0; i < mockNumber; i++) {
-            T mockItem = (T) createMockItem(clazz, getMockConstructor(clazz));
-            mockatas.add(mockItem);
-
+            try {
+                T mockItem = (T) createMockItem(clazz, getMockConstructor(clazz));
+                mockatas.add(mockItem);
+            }catch (Exception e){
+                System.out.print(e);
+            }
         }
         return mockatas;
     }

@@ -18,6 +18,11 @@ public class Dog {
     }
 
     @MockConstructor
+    public Dog() {
+    }
+
+
+
     public Dog(Double month) {
         this.month = month;
     }
