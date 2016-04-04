@@ -3,6 +3,7 @@ package com.theyavikteam.mockatacore.core;
 import com.theyavikteam.mockatacore.annotations.MockConstructor;
 import com.theyavikteam.mockatacore.annotations.MockList;
 import com.theyavikteam.mockatacore.annotations.MockParam;
+import com.theyavikteam.mockatacore.exceptions.MockConstructorException;
 import com.theyavikteam.mockatacore.types.MockataTypes;
 
 import java.lang.reflect.Constructor;

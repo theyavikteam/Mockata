@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.theyavikteam.mockatacore.core.Mockata;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
