@@ -42,7 +42,7 @@ public class CompleteObject {
     }
 
     @MockConstructor
-    public CompleteObject(Double math2,@MockField(name = "math")  Double math) {
+    public CompleteObject(Double math2,Double math) {
         this.math2 = math2;
         this.math = math;
     }
@@ -130,15 +130,7 @@ public class CompleteObject {
     @Override
     public String toString() {
         return "Complete{" +
-                "year=" + year + " -> type: " +  year.getClass().toString()+
-                ", million=" + million +  " -> type: " +  million.getClass().toString()+
-                ", calc=" + calc + " -> type: " +  calc.getClass().toString()+
-                ", math=" + math + " -> type: " +  math.getClass().toString()+
-                ", truth=" + truth + " -> type: " +  truth.getClass().toString()+
-                ", mini=" + mini + " -> type: " +  mini.getClass().toString()+
-                ", name='" + name +  " -> type: " +  name.getClass().toString()+
-                ", start=" + start + " -> type: " +  start.getClass().toString()+
-                ", logic=" + logic + " -> type: " +  logic.getClass().toString()+
-                '}'+"\n\n";
+                "math=" + math + " -> type: " +  math.getClass().toString()+
+                "math2, =" + math2 +  " -> type: " +  math2.getClass().toString()+'}'+"\n\n";
     }
 }
