@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.theyavikteam.mockatacore.core.MockataCore;
+import com.theyavikteam.mockatacore.core.Mockata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class MockataActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<Dog> dogs = new ArrayList<>();
-                dogs = MockataCore.createMockata(Dog.class, 10);
+                dogs = Mockata.createMockata(Dog.class, 10);
                 String s = "";
                 for (Dog d : dogs) {
                     if (d != null) {

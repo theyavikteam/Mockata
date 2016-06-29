@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockataCore {
+public class Mockata {
 
     /**
      * Create a List of MockData items from an Object.
