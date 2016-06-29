@@ -68,7 +68,7 @@ public class MockataCore {
         Object mockItem = null;
         //Check Constructor params
         Type[] parameterTypes = mockConstructor.getGenericParameterTypes();
-        //If constructor have params
+        //if constructor have params
         if (parameterTypes.length > 0){
             Class[] fieldsClasses = new Class[parameterTypes.length];
             Object[] fieldsValues = new Object[parameterTypes.length];
